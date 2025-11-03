@@ -29,9 +29,16 @@ func main() {
 
 	// Jalankan server
 	r := routes.SetupRouter()
-	port := os.Getenv("APP_PORT")
+
+	// Railway menggunakan PORT environment variable
+	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = os.Getenv("APP_PORT") // fallback ke APP_PORT untuk development
+		if port == "" {
+			port = "8080" // default port
+		}
 	}
+
+	log.Printf("Server starting on port %s", port)
 	r.Run(fmt.Sprintf(":%s", port))
 }

@@ -1,28 +1,57 @@
 # sb-go-quiz
-
-Deskripsi
----------
-
-`sb-go-quiz` adalah aplikasi backend sederhana yang ditulis menggunakan bahasa Go. Aplikasi ini menyediakan model dasar untuk buku, kategori, dan pengguna; contoh endpoint untuk operasi CRUD; serta mekanisme migrasi SQL dan seeding data awal (admin). Tujuan proyek ini adalah sebagai latihan membuat REST API, koneksi ke PostgreSQL, autentikasi, dan manajemen migrasi sederhana.
-
-Struktur proyek
-----------------
-
-Berikut struktur folder utama dan fungsi singkat tiap folder/file:
-
-- `main.go` — entry point aplikasi, menginisialisasi DB, JWT, menjalankan migrasi dan server.
-- `config/database.go` — inisialisasi koneksi database dan fungsi `RunMigrations()` untuk menjalankan file SQL di folder `migrations`.
-- `controllers/` — berisi controller untuk resource (`book_controller.go`, `category_controller.go`, `user_controller.go`).
-- `models/` — model-data (`book.go`, `category.go`, `user.go`). Pada `user.go` disertakan helper hashing password menggunakan bcrypt.
-- `routes/routes.go` — pengaturan route/endpoint aplikasi.
-- `middlewares/` — middleware seperti JWT (`auth_jwt.go`).
-- `migrations/` — file SQL migrasi dan seeder. Contoh:
-  - `001_init_tables.sql` — membuat tabel `users`, `categories`, `books`.
-  - `002_seed_admin_user.sql` — menambahkan user `admin` (password `admin`, telah di-hash dengan bcrypt).
-- `scripts/` — skrip bantu, mis. `generate_hash.go` untuk menghasilkan hash bcrypt dari password.
-
 Prasyarat
 ---------
+
+Daftar endpoint (base URL: https://sb-go-quiz-sb-go-quiz.up.railway.app)
+---------------------------------------------------------------
+
+Berikut daftar endpoint yang didefinisikan di `routes/routes.go`. Tambahkan prefix base URL di depan setiap path untuk membentuk URL lengkap.
+
+Base URL: https://sb-go-quiz-sb-go-quiz.up.railway.app
+
+Public endpoints:
+
+- POST /api/users/login
+
+Protected endpoints (memerlukan header Authorization: Bearer <token>):
+
+- GET /api/categories
+- POST /api/categories
+- GET /api/categories/:id
+- DELETE /api/categories/:id
+- GET /api/categories/:id/books
+
+- GET /api/books
+- POST /api/books
+- GET /api/books/:id
+- DELETE /api/books/:id
+
+Contoh URL lengkap:
+
+- https://sb-go-quiz-sb-go-quiz.up.railway.app/api/users/login
+- https://sb-go-quiz-sb-go-quiz.up.railway.app/api/categories
+
+- Go (minimal versi 1.20 direkomendasikan).
+- PostgreSQL yang bisa diakses dari aplikasi.
+- Variabel environment yang diperlukan (lihat bagian Konfigurasi).
+Berikut daftar path file dan folder utama di proyek ini:
+
+- `go.mod`
+- `main.go`
+- `config/database.go`
+- `controllers/book_controller.go`
+- `controllers/category_controller.go`
+- `controllers/user_controller.go`
+- `middlewares/auth_jwt.go`
+- `migrations/001_init_tables.sql`
+- `migrations/002_seed_admin_user.sql`
+- `models/book.go`
+- `models/category.go`
+- `models/user.go`
+- `routes/routes.go`
+- `scripts/generate_hash.go`
+- `README.md`
+
 
 - Go (minimal versi 1.20 direkomendasikan).
 - PostgreSQL yang bisa diakses dari aplikasi.
