@@ -1,7 +1,5 @@
 # sb-go-quiz
-Prasyarat
----------
-
+Jika ingin mengakses langsung Api : 
 Daftar endpoint (base URL: https://sb-go-quiz-sb-go-quiz.up.railway.app)
 ---------------------------------------------------------------
 
@@ -31,28 +29,10 @@ Contoh URL lengkap:
 - https://sb-go-quiz-sb-go-quiz.up.railway.app/api/users/login
 - https://sb-go-quiz-sb-go-quiz.up.railway.app/api/categories
 
-- Go (minimal versi 1.20 direkomendasikan).
-- PostgreSQL yang bisa diakses dari aplikasi.
-- Variabel environment yang diperlukan (lihat bagian Konfigurasi).
-Berikut daftar path file dan folder utama di proyek ini:
 
-- `go.mod`
-- `main.go`
-- `config/database.go`
-- `controllers/book_controller.go`
-- `controllers/category_controller.go`
-- `controllers/user_controller.go`
-- `middlewares/auth_jwt.go`
-- `migrations/001_init_tables.sql`
-- `migrations/002_seed_admin_user.sql`
-- `models/book.go`
-- `models/category.go`
-- `models/user.go`
-- `routes/routes.go`
-- `scripts/generate_hash.go`
-- `README.md`
-
-
+Jika Ingin clone project/dijalankan di local:
+Prasyarat
+---------
 - Go (minimal versi 1.20 direkomendasikan).
 - PostgreSQL yang bisa diakses dari aplikasi.
 - Variabel environment yang diperlukan (lihat bagian Konfigurasi).
