@@ -21,12 +21,12 @@ func InitDB() {
 		log.Println("⚠️  Tidak bisa memuat file .env, menggunakan environment default")
 	}
 
-	dbHost := os.Getenv("DB_HOST")
-	dbPort := os.Getenv("DB_PORT")
-	dbUser := os.Getenv("DB_USER")
-	dbPassword := os.Getenv("DB_PASSWORD")
-	dbName := os.Getenv("DB_NAME")
-	dbSSLMode := os.Getenv("DB_SSLMODE")
+	dbHost := os.Getenv("PGHOST")
+	dbPort := os.Getenv("PGPORT")
+	dbUser := os.Getenv("PGUSER")
+	dbPassword := os.Getenv("PGPASSWORD")
+	dbName := os.Getenv("PGDATABASE")
+	dbSSLMode := os.Getenv("PGSSLMODE")
 	if dbSSLMode == "" {
 		dbSSLMode = "require" // Default to require untuk Railway
 	}
